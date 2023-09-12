@@ -18,3 +18,16 @@ tasks.withType<org.gradle.jvm.tasks.Jar> {
     destinationDirectory.set(file("build/libs"))
 }
 
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+}
+
+tasks {
+    test {
+        useJUnitPlatform()
+    }
+}
