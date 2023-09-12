@@ -1,4 +1,6 @@
+import java.io.IOException;
+
 public interface ProjectGenerator {
-    boolean createFolderStructure(String path, String projectName);
-    boolean createFileStructure(String path, String fileName);
+    void createFolderStructure(String path, String projectName) throws IOException;
+    void createFileStructure(String path, String content, String type) throws IOException;
 }
