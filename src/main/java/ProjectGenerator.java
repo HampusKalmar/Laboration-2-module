@@ -1,6 +1,13 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 import java.io.IOException;
 
-public interface ProjectGenerator {
-    void createFolderStructure(String path, String projectName) throws IOException;
-    void createFileStructure(String path, String content, String type) throws IOException;
+public class ProjectGenerator {
+
+
+    public static void main(String[] args) throws IOException {
+        ProjectGeneratorModel projectModel = new ProjectGeneratorModel();
+        projectModel.createTheFile("index.js");
+    }
 }
