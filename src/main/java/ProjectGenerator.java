@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProjectGenerator implements ProjectGeneratorAPI {
     private final ProjectGeneratorModel projectModel = new ProjectGeneratorModel();
@@ -24,6 +25,11 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
         this.content = content;
         projectModel.checkPath(this.directoryPath);
         projectModel.checkFileWithContent(this.fileName, this.content);
+    
+    }
+
+    public ArrayList<String> findSearchedFile(String directoryPath, String fileName) throws IOException {
+        return projectModel.searchFile(directoryPath, fileName);
     }
 
     /**
@@ -36,6 +42,7 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
             ProjectGenerator project = new ProjectGenerator();
             project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
             project.createFileWithContent("index.js", "console.log('Hello')");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

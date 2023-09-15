@@ -1,6 +1,7 @@
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.io.File;
 
 public class ProjectGeneratorModel {
@@ -11,7 +12,7 @@ public class ProjectGeneratorModel {
      * @param fileName The name of the file.
      * @param content The content of the file.
      */
-    public void checkFileWithContent(String fileName, String content) throws IOException {
+    protected void checkFileWithContent(String fileName, String content) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(content);
         } catch (IOException e) {
@@ -25,7 +26,7 @@ public class ProjectGeneratorModel {
      * @param path The path where the directory is located.
      * @throws IOException Throws a I/O exception if a path does not exist or is not a directory.
      */
-    public void checkPath(String path) throws IOException {
+    protected void checkPath(String path) throws IOException {
         if (path == null) {
             throw new IOException("The specified directory path cannot be null: " + path);
         }
@@ -42,7 +43,7 @@ public class ProjectGeneratorModel {
      * @param userDirectory The directory the user created.
      * @throws IOException Throws a I/O exception if a directory could not be created.
      */
-    public void checkDirectory(String userDirectory) throws IOException {
+    protected void checkDirectory(String userDirectory) throws IOException {
         File directory = new File(userDirectory);
         if (directory.exists()) {
            throw new IOException("Directory already exists: " + userDirectory);
@@ -50,5 +51,15 @@ public class ProjectGeneratorModel {
         if (!directory.mkdir()) {
             throw new IOException("Failed to create new directory: " + userDirectory);
         }
+    }
+
+    protected ArrayList<String> searchFile(String directoryPath, String fileName) throws IOException {
+        ArrayList<String> foundPath = new ArrayList<>();
+        File directory = new File(directoryPath);
+        File[] files = directory.listFiles();
+        for (File file : files) {
+            foundPath.addAll(searchFile(file.getAbsolutePath(), fileName));
+        }
+        return foundPath;
     }
 }
