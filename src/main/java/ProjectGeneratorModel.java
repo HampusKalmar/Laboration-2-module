@@ -11,12 +11,11 @@ public class ProjectGeneratorModel {
      * @param fileName The name of the file.
      * @param content The content of the file.
      */
-    public void createFileWithContent(String fileName, String content) {
+    public void checkFileWithContent(String fileName, String content) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(content);
-            System.out.println("Created a file with the content: " + content);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException("Failed to create file: " + fileName, e);
         }
     }
 
@@ -27,14 +26,13 @@ public class ProjectGeneratorModel {
      * @throws IOException Throws a I/O exception if a path does not exist or is not a directory.
      */
     public void checkPath(String path) throws IOException {
-        File directory = new File(path);
-        
-        if (!directory.exists()) {
-            throw new IOException("The specified path does not exist: " + path);
+        if (path == null) {
+            throw new IOException("The specified directory path cannot be null: " + path);
         }
 
-        if (!directory.isDirectory()) {
-            throw new IOException("The specified path is not a directory: " + path);
+        File directory = new File(path);
+        if (!directory.exists() || !directory.isDirectory()) {
+            throw new IOException("The specified directory path is not valid: " + path);
         }
     }
 
@@ -44,13 +42,13 @@ public class ProjectGeneratorModel {
      * @param userDirectory The directory the user created.
      * @throws IOException Throws a I/O exception if a directory could not be created.
      */
-    public void createDirectory(String userDirectory) throws IOException {
+    public void checkDirectory(String userDirectory) throws IOException {
         File directory = new File(userDirectory);
-        if (!directory.exists()) {
-            directory.mkdirs();
-            System.out.println("Created directory named: " + userDirectory);
-        } else {
-            throw new IOException("Failed to create directory: " + userDirectory);
+        if (directory.exists()) {
+           throw new IOException("Directory already exists: " + userDirectory);
+        }
+        if (!directory.mkdir()) {
+            throw new IOException("Failed to create new directory: " + userDirectory);
         }
     }
 }
