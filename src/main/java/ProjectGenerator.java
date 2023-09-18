@@ -46,25 +46,15 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     }
 
     /**
-     *  Searches for a file by name in the specified directory.
+     *  Searches for a file by name in the specified directory and then prints the file if it exist.
      *
      * @param directoryPath The directory where to search for the file.
      * @param fileName The name of the file to search for.
-     * @return An ArrayList of file names that match the search.
      * @throws IOException If an I/O error occurs.
      */
-    public ArrayList<String> findSearchedFile(String directoryPath, String fileName) throws IOException {
-        return projectModel.searchFile(directoryPath, fileName);
-    }
-
-    /**
-     * Prints the names of the files found by the search operation.
-     *
-     * @param foundFile An ArrayList of file names that were found.
-     * @throws IOException If an I/O error occurs.
-     */
-    public void printFoundFile(ArrayList<String> foundFile) throws IOException {
-        for (String file : foundFile) {
+    public void findSearchedFile(String directoryPath, String fileName) throws IOException {
+        ArrayList<String> foundFiles = projectModel.searchFile(directoryPath, fileName);
+          for (String file : foundFiles) {
             System.out.println("Found file: " + file);
         }
     }
@@ -93,8 +83,8 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
             //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
            // project.createFileWithContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module/testProj", "index.js", "console.log('Hello')");
             // foundFiles = project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", ".gitignore");
-            //project.printFoundFile(foundFiles);
-            project.printDirectoryContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module");
+            project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "gradlew");
+            //project.printDirectoryContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module");
 
         } catch (IOException e) {
             e.printStackTrace();

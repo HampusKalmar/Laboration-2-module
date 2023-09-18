@@ -11,7 +11,7 @@ projectGenerator.createFileWithContent("path/to/directory", "myNewFile.txt", "He
 
 ### Search for a file
 ProjectGenerator projectGenerator = new ProjectGenerator();
-ArrayList<String> foundFile = projectGenerator.findSearchedFile("path/to/directory");
+projectGenerator.findSearchedFile("path/to/directory", "myFile.txt");
 
 ### Print directory content
 ProjectGenerator projectGenerator = new ProjectGenerator();
