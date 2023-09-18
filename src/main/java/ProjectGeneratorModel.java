@@ -1,6 +1,8 @@
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -87,5 +89,24 @@ public class ProjectGeneratorModel {
             result.add(file.getName());
         }
         return result;
+    }
+
+    /**
+     * Lists the files and folders in the directory the user have choosen. 
+     *
+     * @param directoryPath The path where the user wants to list all the content.
+     * @return The content of all the files and modules in that directory.
+     */
+    protected ArrayList<String> listDirectoryContent(String directoryPath) {
+        ArrayList<String> directoryContent = new ArrayList<>();
+        Path dirPath = Paths.get(directoryPath);
+        try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(dirPath)) {
+            for (Path path : directoryStream) {
+                directoryContent.add(path.getFileName().toString());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return directoryContent;
     }
 }

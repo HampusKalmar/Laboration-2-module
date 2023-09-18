@@ -70,6 +70,19 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     }
 
     /**
+     * Prints the content of a specified directory to the console.
+     *
+     * @param directoryPath The file path of the directory whose contents are to be printed.
+     * @throws IOException If an I/O error occurs.
+     */
+    public void printDirectoryContent(String directoryPath) throws IOException {
+        ArrayList<String> directoryContent = projectModel.listDirectoryContent(directoryPath);
+        for (String content : directoryContent) {
+            System.out.println(content);
+        }
+    }
+
+    /**
      * Main method for the ProjectGenerator class.
      *
      * @param args Command-line arguments.
@@ -78,9 +91,10 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
         try {
             ProjectGenerator project = new ProjectGenerator();
             //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
-            project.createFileWithContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module/testProj", "index.js", "console.log('Hello')");
+           // project.createFileWithContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module/testProj", "index.js", "console.log('Hello')");
             // foundFiles = project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", ".gitignore");
-            project.printFoundFile(foundFiles);
+            //project.printFoundFile(foundFiles);
+            project.printDirectoryContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module");
 
         } catch (IOException e) {
             e.printStackTrace();
