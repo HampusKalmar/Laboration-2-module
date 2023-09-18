@@ -3,6 +3,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.File;
+import java.io.FileFilter;
 
 public class ProjectGeneratorModel {
 
@@ -54,12 +55,26 @@ public class ProjectGeneratorModel {
     }
 
     protected ArrayList<String> searchFile(String directoryPath, String fileName) throws IOException {
-        ArrayList<String> foundPath = new ArrayList<>();
         File directory = new File(directoryPath);
-        File[] files = directory.listFiles();
-        for (File file : files) {
-            foundPath.addAll(searchFile(file.getAbsolutePath(), fileName));
+        
+        if (!directory.exists() || !directory.isDirectory()) {
+            throw new IOException("The directory does not exist or is not a directory: " + directoryPath);
         }
-        return foundPath;
+
+        File[] matchingFiles = directory.listFiles(new FileFilter() {
+            public boolean accept(File file) {
+                return file.getName().equals(fileName);
+            } 
+        });
+
+        if (matchingFiles == null || matchingFiles.length == 0) {
+            throw new IOException("No matching files found in directory: " + directoryPath);
+        }
+
+        ArrayList<String> result = new ArrayList<>();
+        for (File file : matchingFiles) {
+            result.add(file.getName());
+        }
+        return result;
     }
 }

@@ -7,6 +7,7 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     private String directoryName;
     private String fileName;
     private String content;
+    private static ArrayList<String> foundFiles = new ArrayList<>();
 
     /**
      * Default constructor for ProjectGenerator class.
@@ -32,6 +33,12 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
         return projectModel.searchFile(directoryPath, fileName);
     }
 
+    public void printFoundFiles(ArrayList<String> foundFiles) throws IOException {
+        for (String file : foundFiles) {
+            System.out.println(file);
+        }
+    }
+
     /**
      * Main method for the ProjectGenerator class.
      *
@@ -40,8 +47,10 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     public static void main(String[] args) {
         try {
             ProjectGenerator project = new ProjectGenerator();
-            project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
-            project.createFileWithContent("index.js", "console.log('Hello')");
+            //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
+            //project.createFileWithContent("index.js", "console.log('Hello')");
+            foundFiles = project.findSearchedFile("", "settings.gradle.kts");
+            project.printFoundFiles(foundFiles);
 
         } catch (IOException e) {
             e.printStackTrace();
