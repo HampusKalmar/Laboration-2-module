@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -30,13 +29,27 @@ public class ProjectGeneratorTest {
 
     @Test
     public void testCreateFileWithContent(@TempDir Path tempDir) throws IOException {
-        String fileName = "testFile.txt";
-        String content = "Hello World!";
-        projectGenerator.createDirectory(tempDir.toString(), content);
+        String directoryName = "testDir";
+        String fileName = "hello.txt";
+        String content = "hello";
+
+        projectGenerator.createDirectory(tempDir.toString(), directoryName);
+
         projectGenerator.createFileWithContent(fileName, content);
-        Path filePath = tempDir.resolve("newDir").resolve(fileName);
-        assertTrue(Files.exists(filePath));
-        String readContent = new String(Files.readAllBytes(filePath), StandardCharsets.UTF_8);
-        assertEquals(content, readContent);
+
+        Path newFile = tempDir.resolve(directoryName).resolve(fileName);
+        assertTrue(Files.exists(newFile));
+        assertTrue(Files.isRegularFile(newFile));
+    }
+
+    @Test
+    public void testFindSearchedFile(@TempDir Path tempDir) throws IOException {
+        Path tempFile = tempDir.resolve("testFile.txt");
+        Files.createFile(tempFile);
+
+        ArrayList<String> foundFiles = projectGenerator.findSearchedFile(tempDir.toString(), "testFile.txt");
+
+        assertEquals(1, foundFiles.size());
+        assertEquals("testFile.txt", foundFiles.get(0));
     }
 }

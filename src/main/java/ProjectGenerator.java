@@ -24,10 +24,7 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     public void createFileWithContent(String fileName, String content) throws IOException {
         this.fileName = fileName;
         this.content = content;
-        String fullFilePath = Paths.get(this.directoryPath, this.directoryName).toString();
-        projectModel.checkPath(this.directoryPath);
-        projectModel.checkFileWithContent(fullFilePath, this.content);
-    
+        projectModel.checkFileWithContent(this.fileName, this.content);
     }
 
     public ArrayList<String> findSearchedFile(String directoryPath, String fileName) throws IOException {
@@ -48,9 +45,9 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     public static void main(String[] args) {
         try {
             ProjectGenerator project = new ProjectGenerator();
-            //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
-            //project.createFileWithContent("index.js", "console.log('Hello')");
-            foundFiles = project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", ".gitignore");
+            project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
+            project.createFileWithContent("index.js", "console.log('Hello')");
+            // foundFiles = project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", ".gitignore");
             project.printFoundFile(foundFiles);
 
         } catch (IOException e) {
