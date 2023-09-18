@@ -44,16 +44,24 @@ public class ProjectGeneratorModel {
      * @param userDirectory The directory the user created.
      * @throws IOException Throws a I/O exception if a directory could not be created.
      */
-    protected void checkDirectory(String userDirectory) throws IOException {
-        File directory = new File(userDirectory);
+    protected void checkDirectory(String fullDirectoryPath) throws IOException {
+        File directory = new File(fullDirectoryPath);
         if (directory.exists()) {
-           throw new IOException("Directory already exists: " + userDirectory);
+           throw new IOException("Directory already exists: " + fullDirectoryPath);
         }
         if (!directory.mkdir()) {
-            throw new IOException("Failed to create new directory: " + userDirectory);
+            throw new IOException("Failed to create new directory: " + fullDirectoryPath);
         }
     }
 
+    /**
+     * Searches for files with a specific name in a given directory.
+     *
+     * @param directoryPath The absolute path of the directory where the search is to be performed.
+     * @param fileName The name of the file.
+     * @return An ArrayList of String containing the names of all matching files.
+     * @throws IOException Throws a I/O exception if a path does not exist or is not a directory.
+     */
     protected ArrayList<String> searchFile(String directoryPath, String fileName) throws IOException {
         File directory = new File(directoryPath);
         

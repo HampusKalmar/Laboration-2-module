@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ProjectGenerator implements ProjectGeneratorAPI {
@@ -15,17 +16,17 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     public ProjectGenerator() {}
 
     public void createDirectory(String directoryPath, String directoryName) throws IOException {
-        this.directoryPath = directoryPath;
-        this.directoryName = directoryName;
-        projectModel.checkPath(this.directoryPath);
-        projectModel.checkDirectory(this.directoryName);
+        String fullDirectoryPath = Paths.get(directoryPath, directoryName).toString();
+        projectModel.checkPath(directoryPath);
+        projectModel.checkDirectory(fullDirectoryPath);
     }
 
     public void createFileWithContent(String fileName, String content) throws IOException {
         this.fileName = fileName;
         this.content = content;
+        String fullFilePath = Paths.get(this.directoryPath, this.directoryName).toString();
         projectModel.checkPath(this.directoryPath);
-        projectModel.checkFileWithContent(this.fileName, this.content);
+        projectModel.checkFileWithContent(fullFilePath, this.content);
     
     }
 
@@ -33,9 +34,9 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
         return projectModel.searchFile(directoryPath, fileName);
     }
 
-    public void printFoundFiles(ArrayList<String> foundFiles) throws IOException {
-        for (String file : foundFiles) {
-            System.out.println(file);
+    public void printFoundFile(ArrayList<String> foundFile) throws IOException {
+        for (String file : foundFile) {
+            System.out.println("Found file: " + file);
         }
     }
 
@@ -49,8 +50,8 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
             ProjectGenerator project = new ProjectGenerator();
             //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
             //project.createFileWithContent("index.js", "console.log('Hello')");
-            foundFiles = project.findSearchedFile("", "settings.gradle.kts");
-            project.printFoundFiles(foundFiles);
+            foundFiles = project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", ".gitignore");
+            project.printFoundFile(foundFiles);
 
         } catch (IOException e) {
             e.printStackTrace();
