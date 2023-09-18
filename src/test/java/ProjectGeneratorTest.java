@@ -34,10 +34,11 @@ public class ProjectGeneratorTest {
         String content = "hello";
 
         projectGenerator.createDirectory(tempDir.toString(), directoryName);
+        Path directoryPath = tempDir.resolve(directoryName);
 
-        projectGenerator.createFileWithContent(fileName, content);
+        projectGenerator.createFileWithContent(directoryPath.toString(), fileName, content);
 
-        Path newFile = tempDir.resolve(directoryName).resolve(fileName);
+        Path newFile = directoryPath.resolve(fileName);
         assertTrue(Files.exists(newFile));
         assertTrue(Files.isRegularFile(newFile));
     }

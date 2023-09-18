@@ -1,6 +1,8 @@
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileFilter;
@@ -13,8 +15,9 @@ public class ProjectGeneratorModel {
      * @param fileName The name of the file.
      * @param content The content of the file.
      */
-    protected void checkFileWithContent(String fileName, String content) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+    protected void checkFileWithContent(String directoryPath, String fileName, String content) throws IOException {
+        Path fullPath = Paths.get(directoryPath, fileName);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath.toString()))) {
             writer.write(content);
         } catch (IOException e) {
             throw new IOException("Failed to create file: " + fileName, e);
