@@ -109,4 +109,13 @@ public class ProjectGeneratorModel {
         }
         return directoryContent;
     }
+
+    protected boolean findFile(String directoryPath, String fileName) throws IOException {
+        Path filePath = Paths.get(directoryPath, fileName);
+        if (Files.exists(filePath) && Files.isRegularFile(filePath)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

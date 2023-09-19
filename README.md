@@ -15,4 +15,8 @@ projectGenerator.findSearchedFile("path/to/directory", "myFile.txt");
 
 ### Print directory content
 ProjectGenerator projectGenerator = new ProjectGenerator();
-project.printDirectoryContent("path/to/directory");
+projectGenerator.printDirectoryContent("path/to/directory");
+
+### Delete a file 
+ProjectGenerator projectGenerator = new ProjectGenerator();
+projectGenerator.deleteFile("path/to/directory", "myFile.txt")

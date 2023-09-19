@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -73,6 +74,22 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     }
 
     /**
+     * Deletes the file the user has specified.
+     *
+     * @param directoryPath The directory path to the file that will be deleted.
+     * @param fileName The name of the file that will be deleted.
+     * @throws IOException If an I/O error occurs.
+     */
+    public void deleteFile(String directoryPath, String fileName) throws IOException {
+        boolean fileExist = projectModel.findFile(directoryPath, fileName);
+        if (fileExist) {
+            Files.delete(Paths.get(directoryPath, fileName));
+        } else {
+            throw new IOException("FIle does not exist: " + fileName);
+        }
+    }
+
+    /**
      * Main method for the ProjectGenerator class.
      *
      * @param args Command-line arguments.
@@ -81,10 +98,10 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
         try {
             ProjectGenerator project = new ProjectGenerator();
             //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
-           // project.createFileWithContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module/testProj", "index.js", "console.log('Hello')");
-            // foundFiles = project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", ".gitignore");
-            project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "gradlew");
+            //project.createFileWithContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "index.js", "console.log('Hello')");
+            //project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "gradlew");
             //project.printDirectoryContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module");
+            project.deleteFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "index.js");
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -5,4 +5,5 @@ public interface ProjectGeneratorAPI {
     void createFileWithContent(String directoryPath, String fileName, String content) throws IOException;
     void findSearchedFile(String directoryPath, String fileName) throws IOException;
     void printDirectoryContent(String directoryPath) throws IOException;
+    void deleteFile(String directoryPath, String fileName) throws IOException;
 }

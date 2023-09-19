@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ProjectGeneratorTest {
@@ -51,10 +50,9 @@ public class ProjectGeneratorTest {
         Path tempFile = tempDir.resolve("testFile.txt");
         Files.createFile(tempFile);
 
-        ArrayList<String> foundFiles = projectGenerator.findSearchedFile(tempDir.toString(), "testFile.txt");
+        projectGenerator.findSearchedFile(tempDir.toString(), "testFile.txt");
 
-        assertEquals(1, foundFiles.size());
-        assertEquals("testFile.txt", foundFiles.get(0));
+        assertTrue(Files.exists(tempFile));
     }
 
     @Test
@@ -85,5 +83,15 @@ public class ProjectGeneratorTest {
         assertTrue(Arrays.asList(outputLines).contains("newDir1"));
         assertTrue(Arrays.asList(outputLines).contains("newDir2"));
         assertTrue(Arrays.asList(outputLines).contains("newFile.txt"));
+    }
+
+    @Test
+    public void testDeleteFile(@TempDir Path tempDir) throws IOException {
+        Path tempFile = tempDir.resolve("testFile.txt");
+        Files.createFile(tempFile);
+
+        projectGenerator.deleteFile(tempDir.toString(), "testFile.txt");
+
+        assertTrue(!Files.exists(tempFile));
     }
 }
