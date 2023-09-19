@@ -11,7 +11,7 @@ plugins {
 }
 
 application {
-    mainClass.set("ProjectGenerator")
+    mainClass.set("App")
 }
 
 tasks.withType<org.gradle.jvm.tasks.Jar> {

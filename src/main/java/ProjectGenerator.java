@@ -11,7 +11,6 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     private String directoryPath;
     private String fileName;
     private String content;
-    private static ArrayList<String> foundFiles = new ArrayList<>();
 
     /**
      * Default constructor for ProjectGenerator class.
@@ -85,26 +84,7 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
         if (fileExist) {
             Files.delete(Paths.get(directoryPath, fileName));
         } else {
-            throw new IOException("FIle does not exist: " + fileName);
-        }
-    }
-
-    /**
-     * Main method for the ProjectGenerator class.
-     *
-     * @param args Command-line arguments.
-     */
-    public static void main(String[] args) {
-        try {
-            ProjectGenerator project = new ProjectGenerator();
-            //project.createDirectory("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "testProj");
-            //project.createFileWithContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "index.js", "console.log('Hello')");
-            //project.findSearchedFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "gradlew");
-            //project.printDirectoryContent("C:/Users/hampu/SKOLA/1dv610/laboration-2-module");
-            project.deleteFile("C:/Users/hampu/SKOLA/1dv610/laboration-2-module", "index.js");
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException("File does not exist: " + fileName);
         }
     }
 }

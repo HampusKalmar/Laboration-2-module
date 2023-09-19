@@ -97,7 +97,7 @@ public class ProjectGeneratorModel {
      * @param directoryPath The path where the user wants to list all the content.
      * @return The content of all the files and modules in that directory.
      */
-    protected ArrayList<String> listDirectoryContent(String directoryPath) {
+    protected ArrayList<String> listDirectoryContent(String directoryPath) throws IOException {
         ArrayList<String> directoryContent = new ArrayList<>();
         Path dirPath = Paths.get(directoryPath);
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(dirPath)) {
@@ -110,6 +110,14 @@ public class ProjectGeneratorModel {
         return directoryContent;
     }
 
+    /**
+     * Finds a file in the given directory with the given name. 
+     *
+     * @param directoryPath The path where the file exist.
+     * @param fileName The name of the file.
+     * @return Boolean if the file exists or not.
+     * @throws IOException If an I/O error occurs.
+     */
     protected boolean findFile(String directoryPath, String fileName) throws IOException {
         Path filePath = Paths.get(directoryPath, fileName);
         if (Files.exists(filePath) && Files.isRegularFile(filePath)) {
