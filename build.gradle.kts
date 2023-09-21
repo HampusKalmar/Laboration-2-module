@@ -5,13 +5,9 @@
  * To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.3/samples
  */
 
-group = "com.projectgenerator.api"
-version = "1.0.0-SNAPSHOT"
-
 plugins {
    `java-library`
-   id("maven-publish")
-   id("signing")
+   application
 }
 
 application {
@@ -44,23 +40,3 @@ tasks.jar {
     }
     from(sourceSets.main.get().output)
 }
-
-//publishing {
-  //  publications {
-      //  create<MavenPublication>("mavenJava")
-       // from(components["java"])
-
-      //  pom {
-        //    name.set("Project Generator API")
-          //  description.set("Allow users to simply create files, directorys, search for files and more.")
-          //  url.set("https://github.com/HampusKalmar/Laboration-2-module")
-
-           // developers {
-            //    developer {
-                    
-            //    }
-          //  }
-      //  }
-   // }
-// }
-
