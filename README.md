@@ -12,7 +12,7 @@
         implementation("com.github.HampusKalmar:Laboration-2-module:v1.0.2")
     }
 
-### If you are using maven: 
+### If you are using Maven: 
     <repositories>
 		<repository>
 		    <id>jitpack.io</id>
@@ -26,6 +26,17 @@
 	    <artifactId>Laboration-2-module</artifactId>
 	    <version>Tag</version>
 	</dependency>
+
+### If you are using gradle: 
+    allprojects {
+		repositories {
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+    dependencies {
+	    implementation 'com.github.HampusKalmar:Laboration-2-module:v1.0.2'
+	}
 
 
 ## API Usage
