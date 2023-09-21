@@ -8,6 +8,7 @@
 plugins {
    `java-library`
    application
+   id("maven-publish")
 }
 
 application {
@@ -39,4 +40,12 @@ tasks.jar {
         attributes("ProjectGeneratorAPI" to "com.projectgenerator.api.ProjectGeneratorAPI")
     }
     from(sourceSets.main.get().output)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+        }
+    }
 }
