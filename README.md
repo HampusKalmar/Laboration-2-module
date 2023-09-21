@@ -3,24 +3,14 @@
 ## Add ProjectGeneratorAPI to your Java project
 
 ### If you are using Kotlin DSL:
+    repositories {
+        mavenCentral()  
+        maven("https://jitpack.io")
+    }
 
-plugins {
-    java
-    application
- }
-
- application {
-    mainClass.set("App")
- }
-
- repositories {
-    mavenCentral()  
-    maven("https://jitpack.io")
-}
-
-dependencies { 
-    implementation("com.github.HampusKalmar:Laboration-2-module:v1.0.2")
-}
+    dependencies { 
+        implementation("com.github.HampusKalmar:Laboration-2-module:v1.0.2")
+    }
 
 ### If you are using maven: 
     <repositories>
