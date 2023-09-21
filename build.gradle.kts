@@ -7,12 +7,7 @@
 
 plugins {
    `java-library`
-   application
    id("maven-publish")
-}
-
-application {
-    mainClass.set("App")
 }
 
 tasks.withType<org.gradle.jvm.tasks.Jar> {
