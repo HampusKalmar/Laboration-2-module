@@ -24,7 +24,7 @@
     <dependency>
 	    <groupId>com.github.HampusKalmar</groupId>
 	    <artifactId>Laboration-2-module</artifactId>
-	    <version>Tag</version>
+	    <version>v1.0.2</version>
 	</dependency>
 
 ### If you are using gradle: 
