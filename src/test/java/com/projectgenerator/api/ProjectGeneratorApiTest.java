@@ -1,3 +1,5 @@
+package com.projectgenerator.api;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,12 +14,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-public class ProjectGeneratorTest {
-    private ProjectGenerator projectGenerator;
+
+public class ProjectGeneratorApiTest {
+    private ProjectGeneratorAPI projectGenerator;
 
     @BeforeEach
     public void setup() {
-        projectGenerator = new ProjectGenerator();
+        projectGenerator = new ProjectGeneratorAPI();
     }
 
     @Test

@@ -1,12 +1,17 @@
+package com.projectgenerator.api;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import com.projectgenerator.model.ProjectGeneratorModel;
+import com.projectgenerator.definition.ProjectGenerator;
+
 /**
  * ProjectGenerator is responsible for managing various file and directory operations.
  */
-public class ProjectGenerator implements ProjectGeneratorAPI {
+public class ProjectGeneratorAPI implements ProjectGenerator {
     private final ProjectGeneratorModel projectModel = new ProjectGeneratorModel();
     private String directoryPath;
     private String fileName;
@@ -15,7 +20,7 @@ public class ProjectGenerator implements ProjectGeneratorAPI {
     /**
      * Default constructor for ProjectGenerator class.
      */
-    public ProjectGenerator() {}
+    public ProjectGeneratorAPI() {}
 
     /**
      * Creates a new directory at the specified path.
