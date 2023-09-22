@@ -22,9 +22,8 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
     /**
      * Creates a new directory at the specified path.
      *
-     * @param directoryPath The path where the directory will be created.
-     * @param directoryName The name of the new directory.
-     * @throws IOException If an I/O error occurs.
+     * @param directoryPath The path the user has choosen where the directory will be created.
+     * @param directoryName The name of the new directory the user has choosen.
      */
     public void createDirectory(String directoryPath, String directoryName) {
         try {
@@ -39,10 +38,9 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
     /**
      * Creates a new file with content at the specified directory path.
      *
-     * @param directoryPath The directory where the file will be created.
-     * @param fileName The name of the file to be created.
+     * @param directoryPath The directory path where the file will be created.
+     * @param fileName The name of the file the user has choosen to be created.
      * @param content The content to be written to the file.
-     * @throws IOException If an I/O error occurs.
      */
     public void createFileWithContent(String directoryPath, String fileName, String content) {
         try {
@@ -60,7 +58,6 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      *
      * @param directoryPath The directory where to search for the file.
      * @param fileName The name of the file to search for.
-     * @throws IOException If an I/O error occurs.
      */
     public void findSearchedFile(String directoryPath, String fileName) { 
         try {
@@ -78,7 +75,6 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * Prints the content of a specified directory to the console.
      *
      * @param directoryPath The file path of the directory whose contents are to be printed.
-     * @throws IOException If an I/O error occurs.
      */
     public void printDirectoryContent(String directoryPath) {
         try {
@@ -96,7 +92,6 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      *
      * @param directoryPath The directory path to the file that will be deleted.
      * @param fileName The name of the file the user has choosen that will be deleted.
-     * @throws IOException If an I/O error occurs.
      */
     public void deleteFile(String directoryPath, String fileName) {
         try {
@@ -110,9 +105,9 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
     }
 
     /**
-     * Displays the size of the file the user has choosen as the path in bytes.
+     * Displays the size (in bytes) of the specified file.
      *
-     * @param filePath The path the user has choosen with a string argument.
+     * @param filePath The path the user has choosen to display the file size.
      */
     public void showFileMetaData(String filePath) {
         try {

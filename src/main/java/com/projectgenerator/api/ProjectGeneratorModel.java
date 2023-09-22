@@ -17,6 +17,7 @@ class ProjectGeneratorModel {
     /**
      * Creates a file with the content inside the file. 
      *
+     * @param directoryPath Directory where the file is to be created.
      * @param fileName The name of the file.
      * @param content The content of the file.
      */
@@ -30,9 +31,9 @@ class ProjectGeneratorModel {
     }
 
     /**
-     * Checks the path of the created directory. 
+     * Checks if the specified path exists and is a directory.
      *
-     * @param path The path where the directory is located.
+     * @param path The path where to check for directory.
      */
     public void checkPath(String path) {
         if (path == null) {
@@ -46,10 +47,9 @@ class ProjectGeneratorModel {
     }
 
     /**
-     * Creates a directory for the user with a name. 
+     * Creates a directory for the user with a name if it does not already exist.
      *
-     * @param userDirectory The directory the user created.
-     * @throws IOException Throws a I/O exception if a directory could not be created.
+     * @param fullDirectoryPath The path the user has choosen to create directory.
      */
     public void checkDirectory(String fullDirectoryPath) {
         File directory = new File(fullDirectoryPath);
@@ -67,7 +67,6 @@ class ProjectGeneratorModel {
      * @param directoryPath The absolute path of the directory where the search is to be performed.
      * @param fileName The name of the file.
      * @return An ArrayList of String containing the names of all matching files.
-     * @throws IOException Throws a I/O exception if a path does not exist or is not a directory.
      */
     public ArrayList<String> searchFile(String directoryPath, String fileName) {
         File directory = new File(directoryPath);
@@ -97,7 +96,7 @@ class ProjectGeneratorModel {
      * Lists the files and folders in the directory the user have choosen. 
      *
      * @param directoryPath The path where the user wants to list all the content.
-     * @return The content of all the files and modules in that directory.
+     * @return The content of all the files and directories in the path the user has choosen.
      */
     public ArrayList<String> listDirectoryContent(String directoryPath) {
         ArrayList<String> directoryContent = new ArrayList<>();
@@ -118,7 +117,6 @@ class ProjectGeneratorModel {
      * @param directoryPath The path where the file exist.
      * @param fileName The name of the file.
      * @return Boolean if the file exists or not.
-     * @throws IOException If an I/O error occurs.
      */
     public boolean findFile(String directoryPath, String fileName) {
         Path filePath = Paths.get(directoryPath, fileName);
