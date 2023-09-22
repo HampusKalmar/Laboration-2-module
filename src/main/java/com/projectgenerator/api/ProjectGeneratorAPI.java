@@ -95,7 +95,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * Deletes the file the user has specified.
      *
      * @param directoryPath The directory path to the file that will be deleted.
-     * @param fileName The name of the file that will be deleted.
+     * @param fileName The name of the file the user has choosen that will be deleted.
      * @throws IOException If an I/O error occurs.
      */
     public void deleteFile(String directoryPath, String fileName) {
@@ -105,6 +105,20 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
                 Files.delete(Paths.get(directoryPath, fileName));
             } 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Displays the size of the file the user has choosen as the path in bytes.
+     *
+     * @param filePath The path the user has choosen with a string argument.
+     */
+    public void showFileMetaData(String filePath) {
+        try {
+            long fileSize = projectModel.fecthFileMetadata(filePath);
+            System.out.println("File size is: " + fileSize + " bytes");
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
     }

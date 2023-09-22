@@ -7,6 +7,7 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileFilter;
@@ -125,6 +126,22 @@ class ProjectGeneratorModel {
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     * Fetches the file size in bytes and then returns the size in a string. 
+     *
+     * @param filePath The path the user has choosen to check the file size.
+     * @return The size of the file in bytes.
+     */
+    public long fecthFileMetadata(String filePath) {
+        Path path = Paths.get(filePath);
+        try {
+            BasicFileAttributes attributes = Files.readAttributes(path, BasicFileAttributes.class);
+            return attributes.size();
+        } catch (IOException e) {
+            throw new RuntimeException("Error fetching file metadata");
         }
     }
 }

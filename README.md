@@ -6,11 +6,11 @@
 	- Installed Gradle
 
 ## Important information
-Right now, the API is only owkring with Kotlin DSL. So when you use my API, be sure to check that you want to use the Kotlin DSL and not Groovy.
+Right now, the API is only working with Kotlin DSL. So when you use my API, be sure to check that you want to use the Kotlin DSL and not Groovy.
 
 ## Add ProjectGeneratorAPI to your Java project
 
-### If you are using Kotlin DSL:
+### Add this in build.gradle.kts (Kotlin DSL):
     repositories {
         mavenCentral()  
         maven("https://jitpack.io")
