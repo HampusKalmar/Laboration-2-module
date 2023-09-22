@@ -1,7 +1,5 @@
 package com.projectgenerator.api;
 
-
-
 interface ProjectGenerator {
     void createDirectory(String directoryPath, String directoryName);
     void createFileWithContent(String directoryPath, String fileName, String content);

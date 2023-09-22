@@ -44,3 +44,7 @@ project.printDirectoryContent("path/to/directory");
 ### Delete a file 
 ProjectGeneratorAPI project = new ProjectGeneratorAPI();
 project.deleteFile("path/to/directory", "myFile.txt")
+
+### Print out file size
+ProjectGeneratorAPI project = new ProjectGeneratorAPI();
+project.showFileMetaData("path/to/file");
