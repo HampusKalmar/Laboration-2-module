@@ -1,5 +1,10 @@
 # Project Generator API
 
+## Prerequisites
+	- Installed JDK (Java Development Kit)
+	- Installed JVM (Java Virual Machine)
+	- Installed Gradle
+
 ## Add ProjectGeneratorAPI to your Java project
 
 ### If you are using Kotlin DSL:
