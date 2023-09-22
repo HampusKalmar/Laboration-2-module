@@ -8,7 +8,7 @@
 ## Important information
 Right now, the API is only working with Kotlin DSL. So when you use my API, be sure to check that you want to use the Kotlin DSL and not Groovy.
 
-## Add ProjectGeneratorAPI to your Java project
+## Add ProjectGeneratorAPI to Java project
 
 ### Add this in build.gradle.kts (Kotlin DSL):
     repositories {
