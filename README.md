@@ -5,6 +5,9 @@
 	- Installed JVM (Java Virual Machine)
 	- Installed Gradle
 
+## Important information
+Right now, the API is only owkring with Kotlin DSL. So when you use my API, be sure to check that you want to use the Kotlin DSL and not Groovy.
+
 ## Add ProjectGeneratorAPI to your Java project
 
 ### If you are using Kotlin DSL:
@@ -16,33 +19,6 @@
     dependencies { 
         implementation("com.github.HampusKalmar:Laboration-2-module:v1.0.2")
     }
-
-### If you are using Maven: 
-    <repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
-
-
-    <dependency>
-	    <groupId>com.github.HampusKalmar</groupId>
-	    <artifactId>Laboration-2-module</artifactId>
-	    <version>v1.0.2</version>
-	</dependency>
-
-### If you are using gradle: 
-    allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
-	}
-
-    dependencies {
-	    implementation 'com.github.HampusKalmar:Laboration-2-module:v1.0.2'
-	}
-
 
 ## API Usage
 
