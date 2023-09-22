@@ -5,9 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import com.projectgenerator.model.ProjectGeneratorModel;
-import com.projectgenerator.definition.ProjectGenerator;
-
 /**
  * ProjectGenerator is responsible for managing various file and directory operations.
  */

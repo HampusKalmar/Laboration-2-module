@@ -1,4 +1,4 @@
-package com.projectgenerator.model;
+package com.projectgenerator.api;
 
 import java.io.FileWriter;
 import java.io.BufferedWriter;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.io.File;
 import java.io.FileFilter;
 
-public class ProjectGeneratorModel {
+class ProjectGeneratorModel {
 
     /**
      * Creates a file with the content inside the file. 
