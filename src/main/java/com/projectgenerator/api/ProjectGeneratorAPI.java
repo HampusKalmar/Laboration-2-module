@@ -31,7 +31,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
             String fullDirectoryPath = Paths.get(directoryPath, directoryName).toString();
             projectModel.checkPath(directoryPath);
             projectModel.checkDirectory(fullDirectoryPath);
-        } catch (IOException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -50,7 +50,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
             this.fileName = fileName;
             this.content = content;
             projectModel.checkFileWithContent(this.directoryPath, this.fileName, this.content);
-        } catch (IOException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
     }
@@ -68,7 +68,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
             for (String file : foundFiles) {
                 System.out.println("Found file: " + file);
             }
-        } catch (IOException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
         
@@ -86,7 +86,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
             for (String content : directoryContent) {
                 System.out.println(content);
             }
-        } catch (IOException e) {
+        } catch (RuntimeException e) {
             e.printStackTrace();
         }
     }

@@ -19,12 +19,12 @@ class ProjectGeneratorModel {
      * @param fileName The name of the file.
      * @param content The content of the file.
      */
-    public void checkFileWithContent(String directoryPath, String fileName, String content) throws IOException {
+    public void checkFileWithContent(String directoryPath, String fileName, String content) {
         Path fullPath = Paths.get(directoryPath, fileName);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fullPath.toString()))) {
             writer.write(content);
         } catch (IOException e) {
-            throw new IOException("Failed to create file: " + fileName, e);
+            throw new RuntimeException("Failed to create file: " + fileName, e);
         }
     }
 
@@ -32,16 +32,15 @@ class ProjectGeneratorModel {
      * Checks the path of the created directory. 
      *
      * @param path The path where the directory is located.
-     * @throws IOException Throws a I/O exception if a path does not exist or is not a directory.
      */
-    public void checkPath(String path) throws IOException {
+    public void checkPath(String path) {
         if (path == null) {
-            throw new IOException("The specified directory path cannot be null: " + path);
+            throw new RuntimeException("The specified directory path cannot be null: " + path);
         }
 
         File directory = new File(path);
         if (!directory.exists() || !directory.isDirectory()) {
-            throw new IOException("The specified directory path is not valid: " + path);
+            throw new RuntimeException("The specified directory path is not valid: " + path);
         }
     }
 
@@ -51,13 +50,13 @@ class ProjectGeneratorModel {
      * @param userDirectory The directory the user created.
      * @throws IOException Throws a I/O exception if a directory could not be created.
      */
-    public void checkDirectory(String fullDirectoryPath) throws IOException {
+    public void checkDirectory(String fullDirectoryPath) {
         File directory = new File(fullDirectoryPath);
         if (directory.exists()) {
-           throw new IOException("Directory already exists: " + fullDirectoryPath);
+           throw new RuntimeException("Directory already exists: " + fullDirectoryPath);
         }
         if (!directory.mkdir()) {
-            throw new IOException("Failed to create new directory: " + fullDirectoryPath);
+            throw new RuntimeException("Failed to create new directory: " + fullDirectoryPath);
         }
     }
 
@@ -69,11 +68,11 @@ class ProjectGeneratorModel {
      * @return An ArrayList of String containing the names of all matching files.
      * @throws IOException Throws a I/O exception if a path does not exist or is not a directory.
      */
-    public ArrayList<String> searchFile(String directoryPath, String fileName) throws IOException {
+    public ArrayList<String> searchFile(String directoryPath, String fileName) {
         File directory = new File(directoryPath);
         
         if (!directory.exists() || !directory.isDirectory()) {
-            throw new IOException("The directory does not exist or is not a directory: " + directoryPath);
+            throw new RuntimeException("The directory does not exist or is not a directory: " + directoryPath);
         }
 
         File[] matchingFiles = directory.listFiles(new FileFilter() {
@@ -83,7 +82,7 @@ class ProjectGeneratorModel {
         });
 
         if (matchingFiles == null || matchingFiles.length == 0) {
-            throw new IOException("No matching files found in directory: " + directoryPath);
+            throw new RuntimeException("No matching files found in directory: " + directoryPath);
         }
 
         ArrayList<String> result = new ArrayList<>();
@@ -99,7 +98,7 @@ class ProjectGeneratorModel {
      * @param directoryPath The path where the user wants to list all the content.
      * @return The content of all the files and modules in that directory.
      */
-    public ArrayList<String> listDirectoryContent(String directoryPath) throws IOException {
+    public ArrayList<String> listDirectoryContent(String directoryPath) {
         ArrayList<String> directoryContent = new ArrayList<>();
         Path dirPath = Paths.get(directoryPath);
         try (DirectoryStream<Path> directoryStream = Files.newDirectoryStream(dirPath)) {
@@ -120,7 +119,7 @@ class ProjectGeneratorModel {
      * @return Boolean if the file exists or not.
      * @throws IOException If an I/O error occurs.
      */
-    public boolean findFile(String directoryPath, String fileName) throws IOException {
+    public boolean findFile(String directoryPath, String fileName) {
         Path filePath = Paths.get(directoryPath, fileName);
         if (Files.exists(filePath) && Files.isRegularFile(filePath)) {
             return true;
