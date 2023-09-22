@@ -26,10 +26,14 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * @param directoryName The name of the new directory.
      * @throws IOException If an I/O error occurs.
      */
-    public void createDirectory(String directoryPath, String directoryName) throws IOException {
-        String fullDirectoryPath = Paths.get(directoryPath, directoryName).toString();
-        projectModel.checkPath(directoryPath);
-        projectModel.checkDirectory(fullDirectoryPath);
+    public void createDirectory(String directoryPath, String directoryName) {
+        try {
+            String fullDirectoryPath = Paths.get(directoryPath, directoryName).toString();
+            projectModel.checkPath(directoryPath);
+            projectModel.checkDirectory(fullDirectoryPath);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -40,11 +44,15 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * @param content The content to be written to the file.
      * @throws IOException If an I/O error occurs.
      */
-    public void createFileWithContent(String directoryPath, String fileName, String content) throws IOException {
-        this.directoryPath = directoryPath;
-        this.fileName = fileName;
-        this.content = content;
-        projectModel.checkFileWithContent(this.directoryPath, this.fileName, this.content);
+    public void createFileWithContent(String directoryPath, String fileName, String content) {
+        try {
+            this.directoryPath = directoryPath;
+            this.fileName = fileName;
+            this.content = content;
+            projectModel.checkFileWithContent(this.directoryPath, this.fileName, this.content);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -54,11 +62,16 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * @param fileName The name of the file to search for.
      * @throws IOException If an I/O error occurs.
      */
-    public void findSearchedFile(String directoryPath, String fileName) throws IOException {
-        ArrayList<String> foundFiles = projectModel.searchFile(directoryPath, fileName);
-          for (String file : foundFiles) {
-            System.out.println("Found file: " + file);
+    public void findSearchedFile(String directoryPath, String fileName) { 
+        try {
+            ArrayList<String> foundFiles = projectModel.searchFile(directoryPath, fileName);
+            for (String file : foundFiles) {
+                System.out.println("Found file: " + file);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+        
     }
 
     /**
@@ -67,10 +80,14 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * @param directoryPath The file path of the directory whose contents are to be printed.
      * @throws IOException If an I/O error occurs.
      */
-    public void printDirectoryContent(String directoryPath) throws IOException {
-        ArrayList<String> directoryContent = projectModel.listDirectoryContent(directoryPath);
-        for (String content : directoryContent) {
-            System.out.println(content);
+    public void printDirectoryContent(String directoryPath) {
+        try {
+            ArrayList<String> directoryContent = projectModel.listDirectoryContent(directoryPath);
+            for (String content : directoryContent) {
+                System.out.println(content);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -81,12 +98,14 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      * @param fileName The name of the file that will be deleted.
      * @throws IOException If an I/O error occurs.
      */
-    public void deleteFile(String directoryPath, String fileName) throws IOException {
-        boolean fileExist = projectModel.findFile(directoryPath, fileName);
-        if (fileExist) {
-            Files.delete(Paths.get(directoryPath, fileName));
-        } else {
-            throw new IOException("File does not exist: " + fileName);
+    public void deleteFile(String directoryPath, String fileName) {
+        try {
+            boolean fileExist = projectModel.findFile(directoryPath, fileName);
+            if (fileExist) {
+                Files.delete(Paths.get(directoryPath, fileName));
+            } 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
