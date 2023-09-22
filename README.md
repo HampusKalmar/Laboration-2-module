@@ -1,6 +1,6 @@
 # Project Generator API
 
-## Prerequisites
+## Prerequisites to use API
 	- Installed JDK (Java Development Kit)
 	- Installed JVM (Java Virual Machine)
 	- Installed Gradle
