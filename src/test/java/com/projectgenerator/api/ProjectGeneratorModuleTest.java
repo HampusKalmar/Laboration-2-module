@@ -26,7 +26,7 @@ public class ProjectGeneratorModuleTest {
         String content = "Hello, Test!";
         
         projectModel.checkFileWithContent(tempDir.toString(), fileName, content);
-        
+
         Path file = tempDir.resolve(fileName);
         assertTrue(Files.exists(file));
         assertEquals(content, Files.readString(file));
