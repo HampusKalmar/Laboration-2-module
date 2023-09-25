@@ -97,4 +97,28 @@ public class ProjectGeneratorApiTest {
 
         assertTrue(!Files.exists(tempFile));
     }
+
+    @Test
+    public void showFileSizeTest(@TempDir Path tempdir) throws IOException {
+        String fileName = "testFileSize.txt";
+        Path testFile = tempdir.resolve(fileName);
+
+        String fileContent = "Test for file size.";
+        Files.write(testFile, fileContent.getBytes());
+
+        long expectedSize = Files.size(testFile);
+
+
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
+        // Call the showFileSize method.
+        projectGenerator.showFileSize(testFile.toString());
+
+        // Reset the standard output to its original state.
+        System.setOut(System.out);
+
+        String expectedOutput = "File size is: " + expectedSize + " bytes";
+        assertTrue(outContent.toString().trim().contains(expectedOutput));
+    }
 }

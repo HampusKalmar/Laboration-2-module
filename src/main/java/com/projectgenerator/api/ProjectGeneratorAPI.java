@@ -109,9 +109,9 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
      *
      * @param filePath The path the user has choosen to display the file size.
      */
-    public void showFileMetaData(String filePath) {
+    public void showFileSize(String filePath) {
         try {
-            long fileSize = projectModel.fecthFileMetadata(filePath);
+            long fileSize = projectModel.fecthFileSize(filePath);
             System.out.println("File size is: " + fileSize + " bytes");
         } catch (RuntimeException e) {
             e.printStackTrace();

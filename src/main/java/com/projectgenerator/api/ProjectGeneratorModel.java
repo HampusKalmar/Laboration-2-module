@@ -133,7 +133,7 @@ class ProjectGeneratorModel {
      * @param filePath The path the user has choosen to check the file size.
      * @return The size of the file in bytes.
      */
-    public long fecthFileMetadata(String filePath) {
+    public long fecthFileSize(String filePath) {
         Path path = Paths.get(filePath);
         try {
             BasicFileAttributes attributes = Files.readAttributes(path, BasicFileAttributes.class);
