@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,22 +56,34 @@ public class ProjectGeneratorModuleTest {
     }
 
     @Test
-    public void searchFileTest() {
+    public void searchFileTest(@TempDir Path tempDir) throws IOException {
+        String fileName = "testFile.txt";
+        Files.createFile(tempDir.resolve(fileName));
+
+        ArrayList<String> result = projectModel.searchFile(tempDir.toString(), fileName);
+        assertEquals(1, result.size());
+        assertEquals(fileName, result.get(0));
+    }
+
+    @Test
+    public void listDirectoryContentTest(@TempDir Path tempDir) throws IOException {
+        String fileName1 = "file1.txt";
+        String fileName2 = "file2.txt";
+        Files.createFile(tempDir.resolve(fileName1));
+        Files.createFile(tempDir.resolve(fileName2));
+
+        ArrayList<String> content = projectModel.listDirectoryContent(tempDir.toString());
+        assertTrue(content.contains(fileName1));
+        assertTrue(content.contains(fileName2));
+    }
+
+    @Test
+    public void findFileTest() throws IOException {
 
     }
 
     @Test
-    public void listDirectoryContentTest() {
-
-    }
-
-    @Test
-    public void findFileTest() {
-
-    }
-
-    @Test
-    public void fetchFileSizeTest() {
+    public void fetchFileSizeTest() throws IOException {
 
     }
 }
