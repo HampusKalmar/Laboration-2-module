@@ -31,11 +31,11 @@ Test strategi: Konfigurerar en katalog med filer och kataloger. Fångar informat
 Resultat: Testet gick igenom (se bild för ProjectGeneratorAPI).
 
 ### deleteFile()
-    - Vad den gör: Hittar en fil som är angiven och raderar sedan filen.
+Vad den gör: Hittar en fil som är angiven och raderar sedan filen.
 
-    - Test strategi: Skapar en fil och försöker sedan ta bort den med metoden som finns i ProjectGeneratorAPI. Verifierar sedan om filen verkligen raderades.
+Test strategi: Skapar en fil och försöker sedan ta bort den med metoden som finns i ProjectGeneratorAPI. Verifierar sedan om filen verkligen raderades.
 
-    - Resultat: Testet gick igenom (se bild för ProjectGeneratorAPI).
+Resultat: Testet gick igenom (se bild för ProjectGeneratorAPI).
 
 ### showFileSize()
 Vad den gör: Visar hur stor den angivna filen är i bytes.
@@ -52,3 +52,8 @@ Resultat: Testet gick igenom (se bild för ProjectGeneratorAPI).
 
 
 ### checkFileWithContent()
+Vad den gör: Verifierar om metoden checkFileWithContent skapar en fil med det angivna innehållet.
+
+Test strategi: Använder sig av metoden för att skapa en fil med specifikt innehåll och validerar sedan både existensen av filen och dess innehåll.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).

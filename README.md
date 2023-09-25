@@ -23,7 +23,7 @@ Right now, the API is only working with Kotlin DSL. So when you use my API, be s
 ## API Usage
 
 ### Import in your project
-import com.projectgenerator.api.ProjectGeneratorAPI;
+![How to import](static/importAPI.png)
 
 ### Create a directory
 ProjectGeneratorAPI project = new ProjectGeneratorAPI();
