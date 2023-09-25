@@ -53,6 +53,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
         }
     }
 
+    // TODO: it sounds like i have already found the file im looking for. maby findfile()?
     /**
      *  Searches for a file by name in the specified directory and then prints the file if it exist.
      *
@@ -104,6 +105,7 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
         }
     }
 
+    // TODO: printFileSize() is even more clear
     /**
      * Displays the size (in bytes) of the specified file.
      *

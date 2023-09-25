@@ -13,7 +13,7 @@ import java.io.File;
 import java.io.FileFilter;
 
 class ProjectGeneratorModel {
-
+// TODO: This function creates a file, so it should maby be named createFIleWith content
     /**
      * Creates a file with the content inside the file. 
      *
@@ -46,6 +46,7 @@ class ProjectGeneratorModel {
         }
     }
 
+    // TODO: This also creates a directory and then control if the user has already made a directory by that name. So its a bad name.
     /**
      * Creates a directory for the user with a name if it does not already exist.
      *
@@ -111,6 +112,7 @@ class ProjectGeneratorModel {
         return directoryContent;
     }
 
+    // TODO: findFile is a bad name for a function of the type boolean. maby isFileExisiting?
     /**
      * Finds a file in the given directory with the given name. 
      *
@@ -127,6 +129,7 @@ class ProjectGeneratorModel {
         }
     }
 
+    // TODO: fetch sounds like im making it async. maby 'get' is a better alternative.
     /**
      * Fetches the file size in bytes and then returns the size in a string. 
      *

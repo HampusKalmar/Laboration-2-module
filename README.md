@@ -17,7 +17,7 @@ Right now, the API is only working with Kotlin DSL. So when you use my API, be s
     }
 
     dependencies { 
-        implementation("com.github.HampusKalmar:Laboration-2-module:v1.0.2")
+        implementation("com.github.HampusKalmar:Laboration-2-module:v1.1.4")
     }
 
 ## API Usage
