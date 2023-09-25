@@ -57,3 +57,10 @@ Vad den gör: Verifierar om metoden checkFileWithContent skapar en fil med det a
 Test strategi: Använder sig av metoden för att skapa en fil med specifikt innehåll och validerar sedan både existensen av filen och dess innehåll.
 
 Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+### checkPathTest()
+Vad den gör: Verifierar sannolikt om en specifik sökväg pekar på en existerande fil eller katalog.
+
+Test strategi: Använder metoden för att kontrollera en specifik fil i en temporär katalog. Därefter verifierar om filen existerar eller inte.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).

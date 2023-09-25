@@ -1,6 +1,7 @@
 package com.projectgenerator.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -78,12 +79,21 @@ public class ProjectGeneratorModuleTest {
     }
 
     @Test
-    public void findFileTest() throws IOException {
+    public void findFileTest(@TempDir Path tempDir) throws IOException {
+        String fileName = "testFile.txt";
+        Files.createFile(tempDir.resolve(fileName));
 
+        assertTrue(projectModel.findFile(tempDir.toString(), fileName));
+        assertFalse(projectModel.findFile(tempDir.toString(), "nonExistentFile.txt"));
     }
 
     @Test
-    public void fetchFileSizeTest() throws IOException {
+    public void fetchFileSizeTest(@TempDir Path tempDir) throws IOException {
+        String fileName = "testFile.txt";
+        String content = "Hello, Test!";
+        Files.writeString(tempDir.resolve(fileName), content);
 
+        long size = projectModel.fecthFileSize(tempDir.resolve(fileName).toString());
+        assertEquals(content.length(), size);
     }
 }
