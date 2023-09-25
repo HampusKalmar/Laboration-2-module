@@ -39,7 +39,7 @@ class ProjectGeneratorModel {
         if (path == null) {
             throw new RuntimeException("The specified directory path cannot be null: " + path);
         }
-
+        
         File directory = new File(path);
         if (!directory.exists() || !directory.isDirectory()) {
             throw new RuntimeException("The specified directory path is not valid: " + path);
