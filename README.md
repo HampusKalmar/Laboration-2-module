@@ -1,9 +1,8 @@
 # Project Generator API
 
 ## Prerequisites to use API
-	- Installed JDK (Java Development Kit)
-	- Installed JVM (Java Virual Machine)
-	- Installed Gradle
+	- Installed JDK (Java Development Kit) ![Java website](https://www.java.com)
+	- Installed Gradle ![Gradle website](https://gradle.org/)
 
 
 ## Add ProjectGeneratorAPI to Java project
@@ -56,4 +55,4 @@ project.deleteFile("path/to/directory", "myFile.txt")
 
 ### Print out file size
 ProjectGeneratorAPI project = new ProjectGeneratorAPI();
-project.showFileMetaData("path/to/file");
+project.showFileSize("path/to/file");
