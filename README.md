@@ -1,8 +1,8 @@
 # Project Generator API
 
 ## Prerequisites to use API
-	- Installed JDK (Java Development Kit) ![Java website](https://www.java.com)
-	- Installed Gradle ![Gradle website](https://gradle.org/)
+	- Installed JDK (Java Development Kit)
+	- Installed Gradle
 
 
 ## Add ProjectGeneratorAPI to Java project
