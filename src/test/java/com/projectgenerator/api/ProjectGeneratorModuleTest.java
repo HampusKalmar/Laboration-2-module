@@ -1,7 +1,12 @@
 package com.projectgenerator.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,18 +21,37 @@ public class ProjectGeneratorModuleTest {
     }
 
     @Test
-    public void checkFileWithContentTest() {
-
+    public void checkFileWithContentTest(@TempDir Path tempDir) throws IOException {
+        String fileName = "testFile.txt";
+        String content = "Hello, Test!";
+        
+        projectModel.checkFileWithContent(tempDir.toString(), fileName, content);
+        
+        Path file = tempDir.resolve(fileName);
+        assertTrue(Files.exists(file));
+        assertEquals(content, Files.readString(file));
     }
 
     @Test
-    public void checkPathTest() {
-
+    public void checkPathTest(@TempDir Path tempDir) throws IOException {
+        String fileName = "testFile.txt";
+        String content = "Hello, Test!";
+        
+        projectModel.checkFileWithContent(tempDir.toString(), fileName, content);
+        
+        Path file = tempDir.resolve(fileName);
+        assertTrue(Files.exists(file));
+        assertEquals(content, Files.readString(file));
     }
 
     @Test
-    public void checkDirectoryTest() {
+    public void checkDirectoryTest(@TempDir Path tempDir) throws IOException {
+        String directoryName = "testDir";
+        projectModel.checkDirectory(tempDir.resolve(directoryName).toString());
 
+        assertTrue(Files.exists(tempDir.resolve(directoryName)));
+        
+        assertThrows(RuntimeException.class, () -> projectModel.checkDirectory(tempDir.resolve(directoryName).toString()));
     }
 
     @Test
@@ -47,6 +71,6 @@ public class ProjectGeneratorModuleTest {
 
     @Test
     public void fetchFileSizeTest() {
-        
+
     }
 }
