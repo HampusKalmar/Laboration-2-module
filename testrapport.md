@@ -64,3 +64,47 @@ Vad den gör: Verifierar sannolikt om en specifik sökväg pekar på en existera
 Test strategi: Använder metoden för att kontrollera en specifik fil i en temporär katalog. Därefter verifierar om filen existerar eller inte.
 
 Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+### checkDirectoryTest()
+Vad den gör: Verifierar om metoden checkDirectory skapar en katalog med det angivna namnet och kastar ett undantag när samma katalog försöker skapas igen.
+
+Test strategi: Använder sig av metoden för att skapa en katalog i en temporär mapp och verifierar sedan att katalogen existerar. Försöker sedan skapa katalogen igen för att kontrollera att ett undantag kastas.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+### searchFileTest()
+Vad den gör: Söker efter en fil med ett angivet namn i en specifik katalog.
+
+Test strategi: Skapar en fil i en temporär katalog och använder sedan metoden för att söka efter den. Verifierar sedan att den hittade filen stämmer överens med det önskade namnet.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+### listDirectoryContent()
+Vad den gör: Listar alla filer och kataloger inom en specifik katalog.
+
+Test strategi: Skapar två filer i en temporär katalog och använder sedan metoden för att hämta innehållet i katalogen. Verifierar att de båda filnamnen finns i den returnerade listan.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+### findFileTest()
+Vad den gör: Söker efter en specifik fil inom en katalog och returnerar sant om den finns, annars falskt.
+
+Test strategi: Skapar en fil i en temporär katalog och använder sedan metoden för att söka efter den. Verifierar att metoden returnerar sant. Testar sedan att söka efter en fil som ej existerar och verifierar att metoden returnerar falskt.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+### fetchFileSizeTest()
+Vad den gör: Hämtar storleken på en specifik fil i antal bytes.
+
+Test strategi: Skapar en fil med känt innehåll i en temporär katalog och använder sedan metoden för att hämta filens storlek. Verifierar att den returnerade storleken motsvarar innehållets längd.
+
+Resultat: Testet gick igenom (se bild för ProjectGeneratorModel).
+
+## Resultat av automatiska enhetstester 
+![Tester för ProjectGeneratorModel](static/laboration-2-tester2.png)
+
+## För att testa modulen själv:
+
+    - Klona ner modulen från Github
+    - Kör "./gradlew test" i konsolen
+    - Se resultatet
