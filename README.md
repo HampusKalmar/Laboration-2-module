@@ -28,6 +28,9 @@
     }
 
 
+## Link to JitPack.io
+[Link to JitPack.io](https://jitpack.io/#HampusKalmar/Laboration-2-module)
+
 ## API Usage
 
 ### Import in your project
