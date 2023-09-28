@@ -18,18 +18,18 @@
 # Generell reflektion 
 
 Efter att ha gått igenom kapitel 2 och 3 från boken "Clean Code", har jag insett att kodkvalitet inte bara 
-mäts i hur funktionellt bra en kod är, utan även i hur lätt den är att förstå, underhålla och utveckla vidare. 
+handlar om hur funktionellt bra en kod är, utan även i hur lätt den är att förstå, underhålla och utveckla vidare. 
 Mitt arbete med namngivning, både för funktioner och variabler, har gett mig en ökad förståelse om hur 
 viktig en konsekvent och beskrivande namngivningsstandard är.
 
 I kapitel 2 blev det tydligt att "meningsfulla namn" är mycket mer än bara ord. De skapar en ökad 
 förståelse för den andra personen som ska läsa min kod., och kan vara skillnaden mellan att snabbt 
 förstå koden och att behöva granska den noggrant. Mitt misstag med metoden "findSearchedFile()" 
-var en påminnelse om detta. Den hamnar under rubriken "Avoid disinformation"
+var en påminnelse om detta. Den hamnar under rubriken "Avoid disinformation".
 
 Kapitel 3 förstärkte idén om "funktionens ansvar". Jag lärde mig att varje funktion borde ha en och 
-endast en uppgift som den ska utföra. Genom att bryta ner större, mer komplexa funktioner till mindre, 
-enkla delar, kan koden bli både mer läsbar och lättare att underhålla för mig själv och andra utvecklare 
+endast en uppgift som den ska utföra. Genom att bryta ner större, mer komplexa funktioner till mindre och
+enklare funktioner, kan koden bli både mer läsbar och lättare att underhålla för mig själv och andra utvecklare 
 som ska sitta med koden jag har skrivit. Dessutom, genom att minska antalet argument, kan man 
 minska komplexiteten av koden och dess testbarhet.
 
@@ -37,10 +37,10 @@ När jag ser tillbaka på mitt arbete, ser jag tydliga mönster där jag har kom
 Jag ser också hur dessa kompromisser inte bara påverkar koden jag skriver just nu, utan också den 
 framtida utvecklingen av programmet.
 
-Sammantaget har dessa kapitel gett mig ett nytt perspektiv på kodkvalitet. Istället för att bara fokusera på 
+För att sammanfatta har dessa kapitel gett mig ett nytt perspektiv på kodkvalitet. Istället för att bara fokusera på 
 att skriva kod som "fungerar", kommer jag nu att sträva efter att skriva kod som är klar, konsis och lätt att 
-förstå Jag vill gärna bli bättre på konceptet "Do One Thing" när det gäller mina metoder. Det kommer 
-hjälpa mig att skriva bättre och mindre metoder som blir lättare att namnge och förstå för mig själv. Det 
+förstå. Jag vill gärna bli bättre på konceptet "Do One Thing" när det gäller mina funktioner. Det kommer 
+hjälpa mig att skriva bättre och mindre funktioner som blir lättare att namnge och förstå för mig själv. Det 
 kommer också hjälpa mig att lösa problemet "Avoid Disinformation", som jag omedevetet hade gjort med 
-några av mina metoder. Jag ser fram emot att implementera dessa lärdomar i mina kommande projekt 
+några av mina funktioner. Jag ser fram emot att implementera dessa lärdomar i mina kommande projekt 
 och fortsätta att utvecklas som programmerare genom att förbättra min kunskap inom programmering.
