@@ -59,3 +59,8 @@ project.deleteFile("path/to/directory", "myFile.txt")
 ### Print out file size
 ProjectGeneratorAPI project = new ProjectGeneratorAPI();
 project.showFileSize("path/to/file");
+
+## Run tests
+    - Clone this repository down to your computer.
+    - Run "./gradlew test" in the console.
+    - See the result.
