@@ -33,16 +33,16 @@ public class ProjectGeneratorApiTest {
     }
 
     @Test
-    public void testCreateFileWithContent(@TempDir Path tempDir) throws IOException {
+    public void testCreateFile(@TempDir Path tempDir) throws IOException {
         String directoryName = "testDir";
         String fileName = "hello.txt";
-        String content = "hello";
 
         projectGenerator.createDirectory(tempDir.toString(), directoryName);
         Path directoryPath = tempDir.resolve(directoryName);
 
-        projectGenerator.createFileWithContent(directoryPath.toString(), fileName, content);
-
+        projectGenerator.setProperties(directoryPath.toString(), fileName, "Hello, World!");
+        projectGenerator.createFile();
+       
         Path newFile = directoryPath.resolve(fileName);
         assertTrue(Files.exists(newFile));
         assertTrue(Files.isRegularFile(newFile));

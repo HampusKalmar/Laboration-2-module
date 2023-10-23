@@ -36,17 +36,23 @@ public class ProjectGeneratorAPI implements ProjectGenerator {
     }
 
     /**
+     * Sets the properties for the file to be created.
+     */
+    public void setProperties(String directoryPath, String fileName, String content) {
+        this.directoryPath = directoryPath;
+        this.fileName = fileName;
+        this.content = content;
+    }
+
+    /**
      * Creates a new file with content at the specified directory path.
      *
      * @param directoryPath The directory path where the file will be created.
      * @param fileName The name of the file the user has choosen to be created.
      * @param content The content to be written to the file.
      */
-    public void createFileWithContent(String directoryPath, String fileName, String content) {
+    public void createFile() {
         try {
-            this.directoryPath = directoryPath;
-            this.fileName = fileName;
-            this.content = content;
             projectModel.checkFileWithContent(this.directoryPath, this.fileName, this.content);
         } catch (RuntimeException e) {
             e.printStackTrace();
